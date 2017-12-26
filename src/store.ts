@@ -26,6 +26,7 @@ const initialState = {
     { name: 'Championship', teams: [] },
   ],
   picks: [],
+  tiebreaker: '',
 };
 
 const store = createStore(
