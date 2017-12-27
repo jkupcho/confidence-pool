@@ -1,21 +1,29 @@
 export enum PickActionType {
-    SELECTED_TEAM,
-}
-
-export interface Pick {
-    game:string;
-    team:string;
-    confidence?:number;
+    CHANGED_PICK,
+    FETCH_PICKS,
+    FINISHED_FETCH,
 }
 
 export interface PickAction {
-    type: PickActionType,
-    payload: Object,
+    type: PickActionType;
+    payload: any;
 }
 
-export function selectedPick(payload:Pick) {
+export interface GamePick {
+    winner?: number;
+    confidence?: number;
+}
+
+export function fetchPicks(fetching: boolean) {
     return {
-        type: PickActionType.SELECTED_TEAM,
-        payload,
+        type: PickActionType.FETCH_PICKS,
+        payload: { fetching },
     }
+}
+
+export function changePick(payload: GamePick) {
+    return {
+        type: PickActionType.CHANGED_PICK,
+        payload,
+    };
 }

@@ -1,3 +1,11 @@
 import * as React from 'react';
 
-export default () => (<span>Hello from Picks</span>);
+class Picks extends React.Component {
+  render() {
+    return (
+      <span>Hello from Picks!</span>
+    );
+  }
+}
+
+export default Picks;
