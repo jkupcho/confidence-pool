@@ -29,7 +29,6 @@ describe('reducers', () => {
             games: [ ...initialGames ] 
         };
 
-
         it('should update a game on CHANGED_PICK', () => {
             const expectedGames = [
                 {
@@ -44,10 +43,14 @@ describe('reducers', () => {
                 games: [ ...expectedGames ]
             };
 
-
-
             const newState = reducers.picksReducers(initialState, { type: actions.PickActionType.CHANGED_PICK, payload: { gameIndex: 0, winner: 1 }})
             expect(expectedState).toEqual(newState)
+        });
+
+        it('should return state if bad index', () => {
+            const newState = reducers.picksReducers(initialState, { type: actions.PickActionType.CHANGED_PICK, payload: { gameIndex: 1, winner: 1 }});
+            
+            expect(initialState).toEqual(newState);
         });
 
     });
