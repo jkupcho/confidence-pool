@@ -18,13 +18,19 @@ describe('actions', () => {
 describe('reducers', () => {
     
     describe('picksReducers', () => {
+        const initialGames = [
+            {
+                name: 'Sun Bowl',
+                teams: ['Badgers', 'Ohio St.']
+            }
+        ];
+        const initialState = { 
+            ...reducers.picksInitialState, 
+            games: [ ...initialGames ] 
+        };
+
+
         it('should update a game on CHANGED_PICK', () => {
-            const initialGames = [
-                {
-                    name: 'Sun Bowl',
-                    teams: ['Badgers', 'Ohio St.']
-                }
-            ];
             const expectedGames = [
                 {
                     name: 'Sun Bowl',
@@ -33,13 +39,8 @@ describe('reducers', () => {
                 }
             ];
 
-            const initialState: reducers.PicksState = { 
-                ...reducers.picksInitialState,
-                games: [ ...initialGames ]
-            };
-
             const expectedState: reducers.PicksState = { 
-                ...reducers.picksInitialState,
+                ...initialState,
                 games: [ ...expectedGames ]
             };
 
