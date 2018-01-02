@@ -15,7 +15,9 @@
     "build": "react-scripts-ts build",
     "build:lambda": "netlify-lambda build src/lambda",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
     "@types/jest": "^21.1.9",
@@ -24,7 +26,10 @@
     "@types/react-dom": "^16.0.3",
     "@types/react-redux": "^5.0.14",
     "babel-loader": "^7.1.2",
-    "netlify-lambda": "^0.1.0"
+    "netlify-lambda": "^0.1.0",
+    "@storybook/react": "^3.3.3",
+    "@storybook/addon-actions": "^3.3.3",
+    "@storybook/addon-links": "^3.3.3"
   },
   "proxy": {
     "/.netlify/functions": {
