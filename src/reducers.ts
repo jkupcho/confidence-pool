@@ -7,8 +7,10 @@ export interface PicksState {
   fetching: boolean;
 }
 
-export const picksInitialState = {
-  picks: { games: [], tiebreaker: "", fetching: false }
+export const picksInitialState: PicksState = {
+  games: [],
+  tiebreaker: "",
+  fetching: false
 };
 
 const gameReducer = (state: Game, action: PickAction) => {
