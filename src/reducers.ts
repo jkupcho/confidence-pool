@@ -1,5 +1,5 @@
-import { PickActionType, PickAction } from './actions/PicksActions';
-import Game from './models/Game';
+import { PickActionType, PickAction } from "./actions/PicksActions";
+import Game from "./models/Game";
 
 export interface PicksState {
   games: Game[];
@@ -7,33 +7,45 @@ export interface PicksState {
   fetching: boolean;
 }
 
-export const picksInitialState = { games: [], tiebreaker: '', fetching: false };
+export const picksInitialState = {
+  picks: { games: [], tiebreaker: "", fetching: false }
+};
 
 const gameReducer = (state: Game, action: PickAction) => {
   switch (action.type) {
     case PickActionType.CHANGED_PICK:
       return {
         ...state,
-        ...action.payload,
-      }
+        ...action.payload
+      };
     default:
       return state;
   }
-}
+};
 
-export const picksReducers = (state: PicksState = picksInitialState, action: PickAction) => {
+export const picksReducers = (
+  state: PicksState = picksInitialState,
+  action: PickAction
+) => {
   switch (action.type) {
     case PickActionType.CHANGED_PICK:
       const { gameIndex, ...restPayload } = action.payload;
-      if (gameIndex !== undefined && gameIndex >= 0 && gameIndex < state.games.length) {
+      if (
+        gameIndex !== undefined &&
+        gameIndex >= 0 &&
+        gameIndex < state.games.length
+      ) {
         return {
           ...state,
           games: [
             ...state.games.slice(0, gameIndex),
-            gameReducer(state.games[gameIndex], { ...action, payload: { ...restPayload } }),
+            gameReducer(state.games[gameIndex], {
+              ...action,
+              payload: { ...restPayload }
+            }),
             ...state.games.slice(gameIndex + 1)
           ]
-        }
+        };
       }
       return state;
     default:

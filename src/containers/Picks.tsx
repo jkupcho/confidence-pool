@@ -1,10 +1,8 @@
-import * as React from 'react';
+import * as React from "react";
 
 class Picks extends React.Component {
   render() {
-    return (
-      <span>Hello from Picks!</span>
-    );
+    return <span>Hello from Picks!</span>;
   }
 }
 
